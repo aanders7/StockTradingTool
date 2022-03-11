@@ -3,7 +3,7 @@ module.exports = (app) => {
   /*
    * Sign up
    */
-  app.post('/api/account/signup', (req, res, next) => {
+  app.post('/../api/signup', (req, res, next) => {
     const { body } = req;
     const {
       password
