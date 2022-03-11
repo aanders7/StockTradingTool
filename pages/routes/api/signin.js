@@ -56,7 +56,7 @@ module.exports = (app) => {
         });
       });
     });  }); // end of sign up endpoint
-    const UserSession = require('../../models/UserSession');
+    const UserSession = require('../../user/UserSession');
 };
 
 
