@@ -1,9 +1,9 @@
-const User = require('../../models/User');
+const User = require('../../user/User');
 module.exports = (app) => {
   /*
    * Sign up
    */
-  app.post('/../api/signup', (req, res, next) => {
+  fetch('/../api/signup', (req, res, next) => {
     const { body } = req;
     const {
       password
