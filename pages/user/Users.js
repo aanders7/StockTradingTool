@@ -1,6 +1,7 @@
-//import bcrypt from;
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');const UserSchema = new mongoose.Schema({
+
+import 'mongoose';
+import 'bcrypt';
+const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     default: ''

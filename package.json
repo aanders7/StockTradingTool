@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "fs": "^0.0.1-security",
     "mongoose": "^6.2.6",
     "next": "^12.1.0",
     "react": "17.0.1",

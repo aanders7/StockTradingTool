@@ -1,4 +1,4 @@
-const User = require('../../user/User');
+import User from '../../user/User';
 module.exports = (app) => {
   /*
    * Sign up
