@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import 'mongoose';
 const UserSessionSchema = new mongoose.Schema({
     userId: {
       type: String,
