@@ -1,11 +1,13 @@
 // Copy this file as config.js in the same folder, with the proper database connection URI.
-
-
-async function main(){
-  /**
+   /**
    * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
    * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
    */
+
+
+/**
+async function main(){
+
   const uri = "mongodb+srv://capstoneProject:capstone@capstonecluster.4wpyb.mongodb.net/test";
 
 
@@ -30,7 +32,11 @@ async function listDatabases(client){
 
   console.log("Databases:");
   databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
+ };
 
 
-main().catch(console.error);
+  main().catch(console.error);
+
+
+ */
+
