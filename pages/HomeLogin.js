@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
+
 import {
   getFromStorage,
   setInStorage,
 } from '../../utils/storage';
+
+import Field from '../components/form/Field'
+
+import homeloginStyle from "../styles/HomeLogin.module.css"
+
 
 class Home extends Component {
   constructor(props) {
@@ -15,22 +21,22 @@ class Home extends Component {
       token: '',
       signUpError: '',
       signInError: '',
-      signInEmail: '',
+      signInUsername: '',
       signInPassword: '',
-      signUpEmail: '',
+      signUpUsername: '',
       signUpPassword: '',
     };
 
-    this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
+    this.onTextboxChangeSignInUsername = this.onTextboxChangeSignInUsername.bind(this);
     this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
-    this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
+    this.onTextboxChangeSignUpUsername = this.onTextboxChangeSignUpUsername.bind(this);
     this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     
     this.onSignIn = this.onSignIn.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
     this.logout = this.logout.bind(this);
   }
-
+  
   componentDidMount() {
     const obj = getFromStorage('the_main_app');
     if (obj && obj.token) {
@@ -57,9 +63,9 @@ class Home extends Component {
     }
   }
 
-  onTextboxChangeSignInEmail(event) {
+  onTextboxChangeSignInUsername(event) {
     this.setState({
-      signInEmail: event.target.value,
+      signInUsername: event.target.value,
     });
   }
 
@@ -69,9 +75,9 @@ class Home extends Component {
     });
   }
 
-  onTextboxChangeSignUpEmail(event) {
+  onTextboxChangeSignUpUsername(event) {
     this.setState({
-      signUpEmail: event.target.value,
+      signUpUsername: event.target.value,
     });
   }
 
@@ -84,7 +90,7 @@ class Home extends Component {
   onSignUp() {
     // Grab state
     const {
-      signUpEmail,
+      signUpUsername,
       signUpPassword,
     } = this.state;
 
@@ -99,7 +105,7 @@ class Home extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: signUpEmail,
+        username: signUpUsername,
         password: signUpPassword,
       }),
     }).then(res => res.json())
@@ -109,7 +115,7 @@ class Home extends Component {
           this.setState({
             signUpError: json.message,
             isLoading: false,
-            signUpEmail: '',
+            signUpUsername: '',
             signUpPassword: '',
           });
         } else {
@@ -124,7 +130,7 @@ class Home extends Component {
   onSignIn() {
     // Grab state
     const {
-      signInEmail,
+      signInUsername,
       signInPassword,
     } = this.state;
 
@@ -139,7 +145,7 @@ class Home extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: signInEmail,
+        username: signInUsername,
         password: signInPassword,
       }),
     }).then(res => res.json())
@@ -151,7 +157,7 @@ class Home extends Component {
             signInError: json.message,
             isLoading: false,
             signInPassword: '',
-            signInEmail: '',
+            signInUsername: '',
             token: json.token,
           });
         } else {
@@ -197,9 +203,9 @@ class Home extends Component {
       isLoading,
       token,
       signInError,
-      signInEmail,
+      signInUsername,
       signInPassword,
-      signUpEmail,
+      signUpUsername,
       signUpPassword,
       signUpError,
     } = this.state;
@@ -219,10 +225,10 @@ class Home extends Component {
             }
             <p>Sign In</p>
             <input
-              type="email"
-              placeholder="Email"
-              value={signInEmail}
-              onChange={this.onTextboxChangeSignInEmail}
+              type="username"
+              placeholder="Username"
+              value={signInUsername}
+              onChange={this.onTextboxChangeSignInUsername}
             />
             <br />
             <input
@@ -244,10 +250,10 @@ class Home extends Component {
             }
             <p>Sign Up</p>
             <input
-              type="email"
-              placeholder="Email"
-              value={signUpEmail}
-              onChange={this.onTextboxChangeSignUpEmail}
+              type="username"
+              placeholder="Username"
+              value={signUpUsername}
+              onChange={this.onTextboxChangeSignUpUsername}
             /><br />
             <input
               type="password"
