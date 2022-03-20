@@ -7,9 +7,9 @@ import {
   setInStorage,
 } from '../../utils/storage';
 
-import Field from '../components/form/Field'
+//import Field from '../components/form/Field';
 
-import homeloginStyle from "../styles/HomeLogin.module.css"
+//import homeloginStyle from "../styles/HomeLogin.module.css";
 
 
 class Home extends Component {
@@ -90,8 +90,8 @@ class Home extends Component {
   onSignUp() {
     // Grab state
     const {
-      signUpUsername,
-      signUpPassword,
+      signUpUsername = React.useRef,
+      signUpPassword = React.useRef,
     } = this.state;
 
     this.setState({
