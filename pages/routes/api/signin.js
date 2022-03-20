@@ -3,19 +3,19 @@ module.exports = (app) => {
   /*
    * Sign up
    */
-  fetch('/../api/signup', (req, res, next) => {
+  fetch('/../api/signin', (req, res, next) => {
     const { body } = req;
     const {
       password
     } = body;
     let {
-      email
+      username
     } = body;
     
-    if (!email) {
+    if (!username) {
       return res.send({
         success: false,
-        message: 'Error: Email cannot be blank.'
+        message: 'Error: Username cannot be blank.'
       });
     }
     if (!password) {
@@ -23,12 +23,12 @@ module.exports = (app) => {
         success: false,
         message: 'Error: Password cannot be blank.'
       });
-    }    email = email.toLowerCase();
-    email = email.trim();    // Steps:
-    // 1. Verify email doesn't exist
+    }    username = username.toLowerCase();
+    username = username.trim();    // Steps:
+    // 1. Verify username doesn't exist
     // 2. Save
     User.find({
-      email: email
+      username: username
     }, (err, previousUsers) => {
       if (err) {
         return res.send({
@@ -41,7 +41,7 @@ module.exports = (app) => {
           message: 'Error: Account already exist.'
         });
       }      // Save the new user
-      const newUser = new User();      newUser.email = email;
+      const newUser = new User();      newUser.username = username;
       newUser.password = newUser.generateHash(password);
       newUser.save((err, user) => {
         if (err) {

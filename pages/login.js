@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import 'whatwg-fetch';
+//import 'whatwg-fetch';
 
 
-import {
+ import {
   getFromStorage,
   setInStorage,
-} from '../../utils/storage';
-
-import Field from '../components/form/Field';
-
-import homeloginStyle from "../styles/HomeLogin.module.css";
+} from '../components/storage';
 
 
-class Home extends Component {
+import loginStyle from "../styles/Login.module.css";
+
+
+class login extends Component {
   constructor(props) {
     super(props);
 
@@ -217,7 +216,7 @@ class Home extends Component {
 
     if (!token) {
       return (
-        <div className = {homeloginStyle.form}>
+        <div className = {loginStyle.form}>
            
           <div>
             {
@@ -279,4 +278,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default login;
